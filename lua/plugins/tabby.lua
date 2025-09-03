@@ -18,11 +18,7 @@ return {
     line = function(line)
       return {
         {
-<<<<<<< HEAD
-          { '  ', hl = theme.head },
-=======
           { '  ', hl = theme.win },
->>>>>>> 6888b81 (Tabline update and more)
           line.sep(' ', theme.head, theme.fill),
         },
         line.tabs().foreach(function(tab)

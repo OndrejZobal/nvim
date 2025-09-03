@@ -61,17 +61,6 @@ return {
         section_separators = { left='\u{e0b4}', right='\u{e0b6}' },
         component_separators = { left='', right='' },
       },
-<<<<<<< HEAD
-      sections = {
-        lualine_x = {
-          {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
-          },
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
-=======
 
       sections = {
         lualine_b = {
@@ -136,7 +125,6 @@ return {
         },
         lualine_y = {
           { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' end },
->>>>>>> 6888b81 (Tabline update and more)
         },
       },
     })
