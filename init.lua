@@ -1,6 +1,29 @@
 vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 
+<<<<<<< HEAD
+=======
+-- Hide command line when not used
+vim.opt.cmdheight = 0
+vim.o.verbosefile = "/dev/null"
+vim.opt.shortmess:append("c")  -- Don't pass messages to completion menu
+vim.opt.shortmess:append("s")  -- Don't show search hit/miss messages
+vim.opt.shortmess:append("F")  -- Don't show file info when editing
+vim.cmd([[
+  set shellredir=>%s\ 2>/dev/null
+  set shellpipe=>%s\ 2>/dev/null
+]])
+-- For the specific pylint error
+vim.api.nvim_create_augroup("_", {})
+vim.api.nvim_exec([[
+  autocmd! InsertLeave * silent!
+]], false)
+
+vim.g.netrw_browse_split = 3    -- Open files in previous window  
+vim.g.netrw_altv = 1           -- Open splits to the right
+vim.g.netrw_liststyle = 3      -- Tree view
+
+>>>>>>> 6888b81 (Tabline update and more)
 local lazypath = vim.fn.stdpath('config') .. "/lazy/"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -14,6 +37,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+<<<<<<< HEAD
+=======
+local status, _ = pcall(function()
+>>>>>>> 6888b81 (Tabline update and more)
 require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
 	checker = {
 		enabled = true,
@@ -23,6 +50,10 @@ require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
 		notify = false,
 	},
 })
+<<<<<<< HEAD
+=======
+end)
+>>>>>>> 6888b81 (Tabline update and more)
 
 vim.api.nvim_create_autocmd({"TermOpen"}, {
   pattern = "*",
@@ -172,6 +203,25 @@ vim.api.nvim_create_autocmd("WinEnter", {
   command = "startinsert",
 })
 
+<<<<<<< HEAD
+=======
+function ReplaceUnicodeEscapes()
+  -- Get selection range
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  
+  -- Create properly escaped pattern for Lua
+  -- Double backslashes are needed in string literals
+  local range = start_line .. "," .. end_line
+  
+  -- Execute substitution with proper escaping for Vim
+  -- Using double backslash for \u in the pattern
+  vim.cmd(range .. "s/\\\\u\\([0-9a-fA-F]\\{4\\}\\)/\\=nr2char(str2nr(submatch(1),16))/g")
+end
+
+-- Map to a command
+vim.cmd("command! ReplaceUnicodeEscapes lua ReplaceUnicodeEscapes()")
+>>>>>>> 6888b81 (Tabline update and more)
 -- Self-documented keybindings
 wk.add({
 	{ "<Leader>b", group = "Buffers" },
@@ -196,6 +246,11 @@ wk.add({
 	{ "<Leader><Tab>n", ":tabnew<CR>", desc = "Open a new tab" },
 	{ "<Leader><Tab>d", ":tabclose<CR>", desc = "Close the current tab" },
 	{ "<Leader>a", ":lua AlignTextWithRegex()<CR>", desc = "Regex align", mode = "v" },
+<<<<<<< HEAD
+=======
+	{ "<Leader>f", group = "format", mode = "v" },
+	{ "<Leader>fu",  [[:'<,'>s/\\u\(\x\{4\}\)/\=nr2char(str2nr(submatch(1), 16))/g<CR>]], desc = "Unicode escape dereference", mode = "v" },
+>>>>>>> 6888b81 (Tabline update and more)
 
 	{ "<Leader>wv", ":vs<CR>", desc = "Split to left and right" },
 	{ "<A-h>", ":tabp<CR>", desc = "Previous tab" },
@@ -265,8 +320,13 @@ function SelectNumberAndJumpToLine()
 end
 
 -- Map the function to a key, for example <Leader>g
+<<<<<<< HEAD
 vim.api.nvim_set_keymap('n', 'ú', '2<C-e>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '§', '2<C-y>', {noremap = true, silent = true})
+=======
+vim.api.nvim_set_keymap('n', '§', '2<C-e>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'ú', '2<C-y>', {noremap = true, silent = true})
+>>>>>>> 6888b81 (Tabline update and more)
 vim.api.nvim_set_keymap('n', 'ů', ';', {noremap = true, silent = true})
 
 vim.keymap.set('n', '+', '1', { noremap = true })

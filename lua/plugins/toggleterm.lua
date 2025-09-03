@@ -4,7 +4,11 @@
   config = function ()
     require("toggleterm").setup{
       auto_scroll = false,
+<<<<<<< HEAD
       border = 'curved',
+=======
+      border = 'double',
+>>>>>>> 6888b81 (Tabline update and more)
      }
     local wk = require("which-key")
     wk.add({

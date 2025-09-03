@@ -61,6 +61,7 @@ return {
         section_separators = { left='\u{e0b4}', right='\u{e0b6}' },
         component_separators = { left='', right='' },
       },
+<<<<<<< HEAD
       sections = {
         lualine_x = {
           {
@@ -70,6 +71,72 @@ return {
           { "encoding" },
           { "fileformat" },
           { "filetype" },
+=======
+
+      sections = {
+        lualine_b = {
+          {'branch'},
+          { 'diff' },
+          {
+            'diagnostics',
+            sections = { 'error', 'warn' },
+            diagnostics_color = {
+              error = 'DiagnosticError',
+              warn = 'DiagnosticInfo',
+            },
+            colored = false,
+            update_in_insert = false, -- TODO FIXME maybe this should be turned off dunno
+            always_visible = false,
+          },
+        },
+        lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            newfile_status = true,
+            path = 0,
+            symbols = {
+              modified = '+',
+              readonly = '-',
+              unnamed = '',
+              newfile = '[New]',
+            },
+          },
+        },
+
+        lualine_x = {
+          -- {
+          --   lazy_status.updates,
+          --   cond = lazy_status.has_updates,
+          -- },
+          {
+            'searchcount',
+            maxcount = 9999,
+            timeout = 500,
+          },
+          {
+            function()
+              local line = vim.fn.line('.')          -- Get current line number
+              local total = vim.fn.line('$')         -- Get total lines
+              
+              if line == 1 or vim.bo.filetype == 'alpha' then
+                return '   '  -- Spaces when at top
+              end
+              
+              if line == total then
+                return 'Bot'
+              end
+              
+              local percent = math.floor((line / total) * 100)
+              return string.format('%2d%%%%', percent)
+            end
+          },
+          { "encoding", cond = function () return vim.bo.fileencoding ~= 'utf-8' and vim.bo.fileencoding ~= '' end },
+          { "fileformat", cond = function () return vim.bo.fileformat ~= 'unix' end },
+        },
+        lualine_y = {
+          { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' end },
+>>>>>>> 6888b81 (Tabline update and more)
         },
       },
     })
