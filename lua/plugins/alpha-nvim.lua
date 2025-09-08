@@ -50,6 +50,7 @@ return {
       dashboard.button("b", "Procházet soubory", ":Telescope file_browser<CR>"),
       dashboard.button("f", "Najít soubor", ":Telescope find_files<CR>"),
       dashboard.button("s", "Prohledat soubory", ":Telescope live_grep<CR>"),
+      dashboard.button("t", "Terminál", ":term<CR>i"),
       dashboard.button("q", "Ukončit", ":q<CR>"),
     }
 

@@ -1,6 +1,5 @@
 vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
-
 local lazypath = vim.fn.stdpath('config') .. "/lazy/"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -43,6 +42,8 @@ vim.cmd.colorscheme("laserwave")
 
 local opt = vim.opt -- for conciseness
 
+opt.cmdheight = 0 -- do not reserve line for command and draw the status line at the bottom
+
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
@@ -63,7 +64,6 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
-
 -- appearance
 
 -- turn on termguicolors for nightly color scheme to work
@@ -109,6 +109,8 @@ local wk = require("which-key")
 -- Silent escape key-map for clearing the search.
 vim.api.nvim_set_keymap('n', '<Esc>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
+vim.cmd("nnoremap / :silent! /")
+vim.cmd("nnoremap ? :silent! ?")
 vim.cmd("highlight TreesitterContextLineNumber guibg=#433350")
 vim.cmd("highlight TreesitterContextSeparator guifg=#433350" )
 vim.cmd("highlight TreesitterContext guibg=#433350") --#201b26")
@@ -242,7 +244,6 @@ function SelectNumberAndJumpToLine()
   if not vim.fn.getline('.'):sub(vim.fn.col('.'), vim.fn.col('.')):match('%d') then vim.fn.search('\\d', 'W') end 
   vim.fn.search('\\d', 'bcW', vim.fn.line('.'))
 
-  
   -- Start visual mode
   vim.cmd('normal! v')
   -- Extend selection to end of number
@@ -265,9 +266,13 @@ function SelectNumberAndJumpToLine()
 end
 
 -- Map the function to a key, for example <Leader>g
-vim.api.nvim_set_keymap('n', 'ú', '2<C-e>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '§', '2<C-y>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'ú', '2<C-y>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '§', '2<C-e>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', 'ů', ';', {noremap = true, silent = true})
+
+-- Alternative mappings that might work better across terminals
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv", { noremap = true, silent = true })
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv", { noremap = true, silent = true })
 
 vim.keymap.set('n', '+', '1', { noremap = true })
 vim.keymap.set('n', 'ě', '2', { noremap = true })
