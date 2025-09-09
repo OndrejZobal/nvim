@@ -47,6 +47,7 @@ return {
 
     dashboard.section.buttons.val = {
       dashboard.button("i", "Prázdný soubor", ":enew<CR>"),
+      dashboard.button("r", "Obnovit sezení", ":AutoSession restore<CR>"),
       dashboard.button("b", "Procházet soubory", ":Telescope file_browser<CR>"),
       dashboard.button("f", "Najít soubor", ":Telescope find_files<CR>"),
       dashboard.button("s", "Prohledat soubory", ":Telescope live_grep<CR>"),
