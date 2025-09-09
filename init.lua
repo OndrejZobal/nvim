@@ -173,12 +173,14 @@ vim.api.nvim_create_autocmd("WinEnter", {
 
 -- Self-documented keybindings
 wk.add({
+	{ "ZZ", ":qall<CR>", desc = "Quit (all)" },
+
+	{ "<A-l>", ":bnext<CR>", desc = "Go to next buffer" },
+	{ "<A-h>", ":bprevious<CR>", desc = "Go to last buffer" },
 	{ "<Leader>b", group = "Buffers" },
 	{ "<Leader><Leader>", "zzzszH", desc = "center" },
 	{ "<Leader>bN", ":enew<CR>", desc = "Create a new buffer" },
 	{ "<Leader>bb", ":Telescope buffers<CR>", desc = "Telescope buffers" },
-	{ "<Leader>bl", ":bnext<CR>", desc = "Go to last buffer" },
-	{ "<Leader>bh", ":bprevious<CR>", desc = "Go to last buffer" },
 	{ "<Leader>bd", ":bp|bd #<CR>", desc = "Delete current buffer" },
 
 	{ "<Leader>s", group = "Set Style" },
@@ -197,8 +199,8 @@ wk.add({
 	{ "<Leader>a", ":lua AlignTextWithRegex()<CR>", desc = "Regex align", mode = "v" },
 
 	{ "<Leader>wv", ":vs<CR>", desc = "Split to left and right" },
-	{ "<A-h>", ":tabp<CR>", desc = "Previous tab" },
-	{ "<A-l>", ":tabn<CR>", desc = "Next tab" },
+	{ "<C-A-h>", ":tabp<CR>", desc = "Previous tab" },
+	{ "<C-A-l>", ":tabn<CR>", desc = "Next tab" },
 	{ "<A-j>", "gj", desc = "Go one line down (including wrapped lines)" },
 	{ "<A-k>", "gk", desc = "Go one line up (including wrapped lines)" },
 	{ "<C-n>", ":vertical resize -4<CR>", desc = "Unincrease vertical size" },
