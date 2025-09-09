@@ -80,42 +80,52 @@ return {
             path = 0,
             symbols = {
               modified = '●',
-              readonly = '\u{E0A2}',
-              unnamed = '',
+              readonly = '',
+              unnamed = '...',
               newfile = '[New]',
             },
+            cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' and vim.bo.filetype ~= 'NvimTree' end,
           }
         },
         lualine_c = {
           { 'diff', colored = false, },
+        },
+        lualine_x = {
           {
             'diagnostics',
-            sections = { 'error', 'warn' },
+            sections = { 'error', },
             diagnostics_color = {
               error = 'DiagnosticError',
               warn = 'DiagnosticInfo',
             },
+            symbols = {error = '󱗗 ', warn = ' ', info = ' ', hint = ' '},
             colored = false,
             update_in_insert = false, -- TODO FIXME maybe this should be turned off dunno
             always_visible = false,
           },
-        },
-        lualine_x = {
           { "encoding", cond = function () return vim.bo.fileencoding ~= 'utf-8' and vim.bo.fileencoding ~= '' end },
           { "fileformat", cond = function () return vim.bo.fileformat ~= 'unix' end },
         },
         lualine_y = {},
         lualine_z = {
-          { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' end },
+          { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' and vim.bo.filetype ~= 'NvimTree' end },
         }
       },
 
+
+      --- SECTIONS
       sections = {
         lualine_a = {
-          {'mode'},
+          {
+            'mode',
+            cond = function () return vim.bo.filetype ~= 'NvimTree' end,
+          },
         },
         lualine_b = {
-          {'branch'},
+          {
+            'branch',
+            cond = function () return vim.bo.filetype ~= 'NvimTree' end,
+          },
           {
             'filename',
             file_status = true,
@@ -124,27 +134,24 @@ return {
             symbols = {
               modified = '●',
               readonly = '\u{E0A2}',
-              unnamed = '',
+              unnamed = '...',
               newfile = '[New]',
             },
+            cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'NvimTree' end,
           },
         },
         lualine_c = {
           { 'diff' },
-          {
-            'diagnostics',
-            sections = { 'error', 'warn' },
-            diagnostics_color = {
-              error = 'DiagnosticError',
-              warn = 'DiagnosticInfo',
-            },
-            colored = false,
-            update_in_insert = false, -- TODO FIXME maybe this should be turned off dunno
-            always_visible = false,
-          },
         },
 
         lualine_x = {
+          {
+            function ()
+              local reg = vim.fn.reg_recording()
+              if reg == "" then return "" end -- not recording
+              return "@" .. reg
+            end
+          },
           -- {
           --   lazy_status.updates,
           --   cond = lazy_status.has_updates,
@@ -164,14 +171,27 @@ return {
             maxcount = 9999,
             timeout = 500,
           },
+          {
+            'diagnostics',
+            sections = { 'error', 'warn', 'info', 'hint' },
+            diagnostics_color = {
+              error = 'DiagnosticError',
+              warn = 'DiagnosticInfo',
+            },
+            symbols = {error = '󱗗 ', warn = ' ', info = ' ', hint = ' '},
+            colored = false,
+            update_in_insert = false, -- TODO FIXME maybe this should be turned off dunno
+            always_visible = false,
+          },
           { "encoding", cond = function () return vim.bo.fileencoding ~= 'utf-8' and vim.bo.fileencoding ~= '' end },
           { "fileformat", cond = function () return vim.bo.fileformat ~= 'unix' end },
         },
         lualine_y = {
-          { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' end },
+            cond = function () return  end,
+          { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' and vim.bo.filetype ~= 'NvimTree' end },
         },
         lualine_z = {
-          { "location"},
+          { "location", cond = function () return vim.bo.filetype ~= 'NvimTree' end,},
           { "progress" },
           -- {
           --   function()
