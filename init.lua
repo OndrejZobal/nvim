@@ -37,9 +37,6 @@ vim.api.nvim_create_autocmd({"TermOpen"}, {
   end
 })
 
-
-vim.cmd.colorscheme("laserwave")
-
 local opt = vim.opt -- for conciseness
 
 opt.cmdheight = 0 -- do not reserve line for command and draw the status line at the bottom
