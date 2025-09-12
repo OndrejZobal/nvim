@@ -78,14 +78,14 @@ return {
             file_status = true,
             newfile_status = true,
             path = 0,
+            cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' and vim.bo.filetype ~= 'NvimTree' end,
             symbols = {
               modified = '●',
               readonly = '',
               unnamed = '...',
               newfile = '[New]',
             },
-            cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' and vim.bo.filetype ~= 'NvimTree' end,
-          }
+          },
         },
         lualine_c = {
           { 'diff', colored = false, },
@@ -187,7 +187,6 @@ return {
           { "fileformat", cond = function () return vim.bo.fileformat ~= 'unix' end },
         },
         lualine_y = {
-            cond = function () return  end,
           { "filetype", colored = false, cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'toggleterm' and vim.bo.filetype ~= 'NvimTree' end },
         },
         lualine_z = {
