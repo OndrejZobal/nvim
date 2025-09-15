@@ -19,38 +19,44 @@ return {
     local my_lualine_theme = {
       normal = {
         a = { bg = colors.fg, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg, gui = "italic" },
-        c = { bg = colors.bg, fg = colors.fg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg, gui = "bold" },
+        c = { bg = colors.bg, fg = colors.fg, gui = "italic" },
+        y = { bg = colors.bg, fg = colors.fg, gui = "italic" },
         x = { bg = colors.bg, fg = colors.fg, gui = "" },
       },
       insert = {
         a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.blue, gui = "italic" },
-        c = { bg = colors.bg, fg = colors.blue, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.blue, gui = "bold" },
+        c = { bg = colors.bg, fg = colors.blue, gui = "italic" },
+        y = { bg = colors.bg, fg = colors.fg, gui = "italic" },
         x = { bg = colors.bg, fg = colors.blue, gui = "" },
       },
       visual = {
         a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.yellow, gui = "italic" },
-        c = { bg = colors.bg, fg = colors.yellow, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.yellow, gui = "bold" },
+        c = { bg = colors.bg, fg = colors.yellow, gui = "italic" },
+        y = { bg = colors.bg, fg = colors.fg, gui = "italic" },
         x = { bg = colors.bg, fg = colors.yellow, gui = "" },
       },
       command = {
         a = { bg = colors.bg, fg = colors.fg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg, gui = "italic" },
-        c = { bg = colors.bg, fg = colors.fg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg, gui = "bold" },
+        c = { bg = colors.bg, fg = colors.fg, gui = "italic" },
+        y = { bg = colors.bg, fg = colors.fg, gui = "italic" },
         x = { bg = colors.bg, fg = colors.fg, gui = "" },
       },
       replace = {
         a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.red, gui = "italic" },
-        c = { bg = colors.bg, fg = colors.red, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.red, gui = "bold" },
+        c = { bg = colors.bg, fg = colors.red, gui = "italic" },
+        y = { bg = colors.bg, fg = colors.fg, gui = "italic" },
         x = { bg = colors.bg, fg = colors.red, gui = "" },
       },
       terminal = {
         a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.green, gui = "italic" },
-        c = { bg = colors.bg, fg = colors.green, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.green, gui = "bold" },
+        c = { bg = colors.bg, fg = colors.green, gui = "italic" },
+        y = { bg = colors.bg, fg = colors.fg, gui = "italic" },
         x = { bg = colors.bg, fg = colors.green, gui = "" },
       },
       inactive = {
@@ -126,6 +132,8 @@ return {
             'branch',
             cond = function () return vim.bo.filetype ~= 'NvimTree' end,
           },
+        },
+        lualine_c = {
           {
             'filename',
             file_status = true,
@@ -139,8 +147,6 @@ return {
             },
             cond = function () return vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'NvimTree' end,
           },
-        },
-        lualine_c = {
           { 'diff' },
         },
 

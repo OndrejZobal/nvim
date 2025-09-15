@@ -106,13 +106,6 @@ local wk = require("which-key")
 -- Silent escape key-map for clearing the search.
 vim.api.nvim_set_keymap('n', '<Esc>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
-vim.cmd("nnoremap / :silent! /")
-vim.cmd("nnoremap ? :silent! ?")
-vim.cmd("highlight TreesitterContextLineNumber guibg=#433350")
-vim.cmd("highlight TreesitterContextSeparator guifg=#433350" )
-vim.cmd("highlight TreesitterContext guibg=#433350") --#201b26")
-vim.cmd("highlight TreesitterContextBottom guibg=#433350 gui=underline guisp=#dd50aa")
-
 vim.cmd(":highlight! StatusLine  guibg=#dd50aa ")
 vim.cmd(":highlight! StatusLineNC  guibg=#dd50aa ")
 -- Function to align text based on a regex pattern in visual block mode
