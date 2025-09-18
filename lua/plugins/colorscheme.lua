@@ -6,6 +6,7 @@ return {
       -- load the colorscheme here
       vim.cmd([[colorscheme laserwave]])
       vim.api.nvim_set_hl(0, 'EndOfBuffer', { fg = 'bg' }) 
+      vim.wo.fillchars='eob: '
     end,
   },
 }

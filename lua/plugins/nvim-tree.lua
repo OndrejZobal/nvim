@@ -18,9 +18,15 @@ return {
         width = 35,
         relativenumber = false,
       },
+      modified = {
+          enable = true,
+      },
+
       -- change folder arrow icons
       renderer = {
+        highlight_modified = "none",
         icons = {
+          git_placement = "right_align",
           web_devicons = {
             file = {
               enable = true,
